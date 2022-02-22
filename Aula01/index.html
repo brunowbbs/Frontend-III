@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>Meu primeiro site</title>
+  </head>
+  <body>
+    <div id="container">
+
+    </div>
+
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <script>
+      var h1 = React.createElement("h1", {style:{ color:'red', backgroundColor: '#FFF' }, id: "title"}, "Hello World");
+      var h2 = React.createElement("h2", { style: { color: 'red' }, id: "title" }, "Hello World");
+      var button = React.createElement("button", {onClick: ()=>alert('ok')}, "Aperte");
+
+      var container = React.createElement("div",{},[ h1, h2, button ]);
+
+      ReactDOM.render(container, document.getElementById("container"));
+    </script>
+  </body>
+</html>
