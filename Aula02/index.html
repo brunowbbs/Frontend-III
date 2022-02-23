@@ -16,23 +16,27 @@
 
     <script type="text/babel">
 
+
+      function Box({item}){
+
+        // const {item} = props;
+
+        return(
+          <h1>{item ? item: "Nao passou o item"}</h1>
+        )
+      }
+
+
       const frutas = ["Laranja", "Maça", "Banana", "Goiaba", "Amora", "Maracuja", "Maça"];
 
 
-      var container = 
-        <div>
-        
-          <ul>
-
-            {
-              frutas.map((item, index)=>{
-                return <li key={index.toString()}>{item}</li>
-              })
-            }
-          
-          </ul>
-        
-        </div>;
+      const container = 
+      <>
+        <Box item="Geladeira" />
+        <Box item="Fogão" />
+        <Box item="Guarda roupa" />
+        <Box item="Cama" />
+      </>
 
 
 
