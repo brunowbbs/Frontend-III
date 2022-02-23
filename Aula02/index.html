@@ -17,26 +17,31 @@
     <script type="text/babel">
 
 
-      function Box({item}){
+      function Box({item, preco}){
 
         // const {item} = props;
 
         return(
-          <h1>{item ? item: "Nao passou o item"}</h1>
+          <>
+            <li>{item ? item: "Nao passou o item"}</li>
+          </>
         )
       }
 
+      
+      const Box = ({ item, preco })=> <li>{item ? item : "Nao passou o item"}</li>
 
-      const frutas = ["Laranja", "Maça", "Banana", "Goiaba", "Amora", "Maracuja", "Maça"];
+
+      const itens = ["Guarda roupa", "Cama", "Colchao"];
 
 
       const container = 
-      <>
-        <Box item="Geladeira" />
-        <Box item="Fogão" />
-        <Box item="Guarda roupa" />
-        <Box item="Cama" />
-      </>
+      <ul>
+        {
+          itens.map((item, index)=> <Box key={index.toString()} item={item} />)
+        }
+
+      </ul>
 
 
 
