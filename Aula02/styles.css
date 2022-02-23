@@ -1,0 +1,9 @@
+body {
+  background: green;
+  font-size: 32px;
+}
+
+.title {
+  color: red;
+  font-size: 16px;
+}

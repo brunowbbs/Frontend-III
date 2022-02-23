@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <title>Meu primeiro site</title>
+    <link rel="stylesheet" href="./styles.css"/>
+  </head>
+  <body>
+    <div id="container">
+
+    </div>
+
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- JSX => é uma extensão para criação de componentes -->
+    <!-- Babel => Transpilação de codigo entendível para o navegador -->
+
+    <script type="text/babel">
+
+      const frutas = ["Laranja", "Maça", "Banana", "Goiaba", "Amora", "Maracuja", "Maça"];
+
+
+      var container = 
+        <div>
+        
+          <ul>
+
+            {
+              frutas.map((item, index)=>{
+                return <li key={index.toString()}>{item}</li>
+              })
+            }
+          
+          </ul>
+        
+        </div>;
+
+
+
+      ReactDOM.render(container, document.getElementById("container"));
+    </script>
+  </body>
+</html>
