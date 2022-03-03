@@ -1,0 +1,22 @@
+.header_container_home{
+  background: #ED1B2E;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo_header_home{
+  width: 60px;
+  height: ¨60px;
+  margin: 20px;
+}
+
+.list_item_home{
+  list-style: none;
+  color:#FFF;
+  display: flex;
+}
+
+.item_home{
+  margin: 0 10px;
+}

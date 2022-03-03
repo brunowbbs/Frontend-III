@@ -1,0 +1,10 @@
+.title_home{
+  text-align: center;
+  margin-top: 20px;
+}
+
+.container_card_home{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
