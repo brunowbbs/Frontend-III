@@ -1,0 +1,18 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  height: 80px;
+  background: red;
+}
+
+footer {
+  height: 50px;
+  background: yellow;
+}
+
+.container {
+  height: calc(100vh - 80px - 50px);
+}

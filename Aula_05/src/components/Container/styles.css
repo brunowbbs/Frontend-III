@@ -1,0 +1,21 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Fredoka", sans-serif;
+}
+
+header {
+  height: 80px;
+  color: #fff;
+  background: rebeccapurple;
+}
+
+footer {
+  height: 120px;
+  background: red;
+  color: #fff;
+}
+
+main {
+  min-height: calc(100vh - 80px - 120px);
+}
