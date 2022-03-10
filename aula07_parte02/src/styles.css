@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background: #7bed9f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.input {
+  height: 47px;
+  width: 90%;
+  margin: 30px;
+  border-radius: 12px;
+}
+
+.container_buttons {
+  display: flex;
+  margin: 10px;
+  gap: 20px;
+}
