@@ -3,7 +3,12 @@ export default function Item(props) {
     <div>
       <input type="checkbox" defaultChecked={props.status} />
       <span>{props.nome}</span>
-      <button onClick={() => props.funcaoApagar(props.id)}>Apagar</button>
+      {/* {!props.status ? (
+        <button onClick={() => props.funcaoApagar(props.id)}>Apagar</button>
+      ) : undefined} */}
+      {!props.status && (
+        <button onClick={() => props.funcaoApagar(props.id)}>Apagar</button>
+      )}
     </div>
   );
 }
