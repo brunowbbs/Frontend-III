@@ -1,0 +1,9 @@
+main {
+  /* background-color: brown; */
+  height: calc(100vh - 70px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 50px;
+}
