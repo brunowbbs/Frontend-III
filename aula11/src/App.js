@@ -1,34 +1,36 @@
-import { useState } from "react";
+import { Formik } from "formik";
 
 function App() {
-  const [nome, setNome] = useState("");
-  const [curso, setCurso] = useState("back");
-
-  function submitForm(evento) {
-    // console.log(evento);
-    evento.preventDefault();
-    console.log(nome);
-  }
-
   return (
-    <form onSubmit={submitForm}>
-      <h1>
-        {nome} - {curso}
-      </h1>
-      <input onChange={(evento) => setNome(evento.target.value)} />
+    <Formik
+      //valores iniciais do form
+      initialValues={{ email: "" }}
+      //função de submissao do formulario
+      onSubmit={(values) => alert(values.email)}
+      //validar campos
+      validate={(values) => {
+        const errors = {};
 
-      <select
-        onChange={(evento) => setCurso(evento.target.value)}
-        defaultValue={curso}
-      >
-        <option></option>
-        <option value="front">Front end</option>
-        <option value="back">Back end</option>
-        <option value="devops">DevOps</option>
-      </select>
+        if (!values.email) {
+          errors.email = "Colé, digite um email";
+        } else if (
+          !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+        ) {
+          errors.email = "Email invalido";
+        }
 
-      <input type="submit" />
-    </form>
+        return errors;
+      }}
+    >
+      {({ handleSubmit, handleChange, errors }) => (
+        <form onSubmit={handleSubmit}>
+          <input name="email" placeholder="Email" onChange={handleChange} />
+          {errors.email && <span>{errors.email}</span>}
+
+          <button type="submit">Sumit</button>
+        </form>
+      )}
+    </Formik>
   );
 }
 
