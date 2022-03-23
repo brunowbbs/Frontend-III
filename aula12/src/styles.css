@@ -8,3 +8,53 @@
   min-height: calc(100vh - 10vw);
   padding: 5vw;
 }
+
+.header-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.container-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+button {
+  background: #009432;
+  height: 50px;
+  width: 140px;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 16px;
+  transition: ease all 0.2s;
+  cursor: pointer;
+}
+
+button:hover {
+  filter: brightness(0.85);
+}
+
+button:last-child {
+  background: #ed4c67;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+input {
+  height: 35px;
+  border: 1px solid #555;
+  border-radius: 5px;
+  font-size: 18px;
+  padding: 0 10px;
+}
+
+label > span:last-child {
+  color: red;
+}
