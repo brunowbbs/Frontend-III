@@ -1,0 +1,126 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  box-sizing: border-box;
+  color: #1a1a1a;
+}
+
+h1 {
+  color: #fff;
+  font-size: 1.4rem;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.app {
+  display: flex;
+  flex: 1;
+  min-height: 100vh;
+}
+
+form {
+  background: #4b7bec;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 550px;
+  margin: auto;
+  padding: 10px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.row {
+  display: flex;
+}
+
+.row > label {
+  display: flex;
+  flex: 1;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.checkbox {
+  display: flex;
+  flex-direction: row;
+  margin-left: 20px;
+  align-items: center;
+}
+
+span {
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+input {
+  padding: 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  height: 55px;
+  border: none;
+  border-radius: 5px;
+}
+
+.container-buttons {
+  display: flex;
+  /* flex: 1; */
+  margin-top: 15px;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+button {
+  height: 50px;
+  width: 250px;
+  background: #fff;
+  border: none;
+  border-radius: 2px;
+}
+
+button:last-child {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+ul {
+  margin: auto;
+  list-style: none;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 100vh;
+  padding: 5px;
+  overflow-y: scroll;
+}
+
+li {
+  background: #f0f0f0;
+  margin: 2px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+p {
+  font-weight: 300;
+}
