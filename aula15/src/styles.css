@@ -26,7 +26,7 @@ form {
   flex: 1;
   flex-direction: column;
   min-height: 100vh;
-  max-width: 550px;
+  max-width: 400px;
   margin: auto;
   padding: 10px;
 }
@@ -84,7 +84,7 @@ input {
 
 button {
   height: 50px;
-  width: 250px;
+  width: 185px;
   background: #fff;
   border: none;
   border-radius: 2px;
