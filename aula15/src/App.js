@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FiEdit, FiTrash } from "react-icons/fi";
+import { FiCheck, FiEdit, FiTrash } from "react-icons/fi";
 
 import "./styles.css";
 
@@ -10,6 +10,7 @@ function App() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
+  const [id, setId] = useState("");
 
   useEffect(() => {
     getTodos();
@@ -21,7 +22,6 @@ function App() {
       const data = await fetch("http://localhost:3000/api/todo");
 
       const { todos } = await data.json();
-      console.log(todos);
 
       setTodos(todos);
     } catch (error) {
@@ -30,7 +30,7 @@ function App() {
     setLoading(false);
   }
 
-  async function handleSubmit(event) {
+  async function newTodo(event) {
     event.preventDefault();
 
     if (!title || !description || !date) {
@@ -49,6 +49,7 @@ function App() {
           body: JSON.stringify(body),
         });
         alert("Cadastrado com sucesso");
+        clearStates();
         getTodos();
       } catch (error) {
         alert("Erro ao cadastrar ToDo");
@@ -68,9 +69,57 @@ function App() {
     }
   }
 
+  function fillStates(todo) {
+    setTitle(todo.title);
+    setDescription(todo.description);
+    setDate(todo.date.split("T")[0]);
+    setId(todo.id);
+  }
+
+  function clearStates() {
+    setId("");
+    setTitle("");
+    setDescription("");
+    setDate("");
+  }
+
+  async function editTodo(event) {
+    event.preventDefault();
+    try {
+      const body = {
+        title,
+        description,
+        date,
+      };
+      await fetch("http://localhost:3000/api/todo/" + id, {
+        method: "PATCH",
+        body: JSON.stringify(body),
+      });
+      alert("ToDO alterado");
+      clearStates();
+      getTodos();
+    } catch (error) {
+      alert("Erro ao alterar");
+    }
+  }
+
+  async function checkTodo(id, status) {
+    const body = {
+      status: !status,
+    };
+
+    try {
+      await fetch("http://localhost:3000/api/todo/" + id, {
+        method: "PATCH",
+        body: JSON.stringify(body),
+      });
+      getTodos();
+    } catch (error) {}
+  }
+
   return (
     <div className="app">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={id ? editTodo : newTodo}>
         <h1>ToDo List - 2.0</h1>
         <div className="inputs">
           <label>
@@ -102,25 +151,35 @@ function App() {
           </div>
         </div>
         <div className="container-buttons">
-          <button type="submit">Salvar</button>
-          <button>Limpar</button>
+          <button type="submit">{!id ? "Salvar" : "Alterar"}</button>
+          <button type="button" onClick={clearStates}>
+            Limpar
+          </button>
         </div>
       </form>
       <ul>
         {todos.map((todo) => (
-          <li>
+          <li
+            style={todo.status ? { background: "blue" } : { background: "red" }}
+          >
             <div>
               <h2>{todo.title}</h2>
               <p>{todo.description}</p>
               <p>{todo.date}</p>
               <p>{todo.id}</p>
+              <p>{todo.status.toString()}</p>
             </div>
             <div className="container-buttons">
-              <FiEdit size={20} color="#444" />
+              <FiEdit size={20} color="#444" onClick={() => fillStates(todo)} />
               <FiTrash
                 size={20}
                 color="#444"
                 onClick={() => deleteTodo(todo.id)}
+              />
+              <FiCheck
+                size={20}
+                color="#444"
+                onClick={() => checkTodo(todo.id, todo.status)}
               />
             </div>
           </li>
