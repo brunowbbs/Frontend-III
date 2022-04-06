@@ -55,7 +55,7 @@ new Server({
   },
   routes() {
     this.namespace = "api";
-    this.timing = 50;
+    this.timing = 2000;
 
     this.get("/product", (schema) => {
       return schema.products.all();
