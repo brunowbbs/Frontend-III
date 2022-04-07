@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rebeccapurple;
+}
+
+input {
+  height: 35px;
+  min-width: 250px;
+  font-size: 1rem;
+  padding: 0 10px;
+}
+
+button {
+  height: 35px;
+  border: none;
+  margin-left: 5px;
+  background: #959595;
+  padding: 0 10px;
+}
