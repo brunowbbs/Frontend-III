@@ -21,8 +21,8 @@ new Server({
     });
     server.create("account", {
       client: "João Lopes",
-      date: new Date(),
-      balance: 4125000,
+      date: new Date(), //UTC
+      balance: 4125000, //R$4.124.000,00
     });
   },
   routes() {
