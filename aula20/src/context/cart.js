@@ -3,10 +3,7 @@ import { createContext, useState } from "react";
 export const CartContext = createContext();
 
 export default function CartProvider({ children }) {
-  const [productsCart, setProductsCart] = useState([
-    { id: 1, qtd: 5 },
-    { id: 2, qtd: 2 },
-  ]);
+  const [productsCart, setProductsCart] = useState([]);
 
   function addProducToCart(id) {
     const copyProductsCart = [...productsCart];
@@ -22,8 +19,30 @@ export default function CartProvider({ children }) {
     setProductsCart(copyProductsCart);
   }
 
+  function removeProductToCart(id) {
+    const copyProductsCart = [...productsCart];
+
+    const item = copyProductsCart.filter((product) => product.id === id);
+
+    if (item.length > 0) {
+      if (item[0].qtd > 1) {
+        item[0].qtd = item[0].qtd - 1;
+        setProductsCart(copyProductsCart);
+      } else {
+        const arrayFilterd = copyProductsCart.filter(
+          (product) => product.id !== id
+        );
+        setProductsCart(arrayFilterd);
+      }
+    } else {
+      alert("Esse produto não existe no carrinho");
+    }
+  }
+
   return (
-    <CartContext.Provider value={{ productsCart, addProducToCart }}>
+    <CartContext.Provider
+      value={{ productsCart, addProducToCart, removeProductToCart }}
+    >
       {children}
     </CartContext.Provider>
   );
