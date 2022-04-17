@@ -5,15 +5,17 @@ export const CartContext = createContext();
 export default function CartProvider({ children }) {
   const [productsCart, setProductsCart] = useState([]);
 
+  //{id: 1, qtd:1}
+
   function addProducToCart(id) {
     const copyProductsCart = [...productsCart];
 
-    const item = copyProductsCart.filter((product) => product.id === id);
+    const item = copyProductsCart.find((product) => product.id === id);
 
-    if (item.length > 0) {
-      item[0].qtd = item[0].qtd + 1;
-    } else {
+    if (!item) {
       copyProductsCart.push({ id: id, qtd: 1 });
+    } else {
+      item.qtd = item.qtd + 1;
     }
 
     setProductsCart(copyProductsCart);
@@ -22,26 +24,26 @@ export default function CartProvider({ children }) {
   function removeProductToCart(id) {
     const copyProductsCart = [...productsCart];
 
-    const item = copyProductsCart.filter((product) => product.id === id);
+    const item = copyProductsCart.find((product) => product.id === id);
 
-    if (item.length > 0) {
-      if (item[0].qtd > 1) {
-        item[0].qtd = item[0].qtd - 1;
-        setProductsCart(copyProductsCart);
-      } else {
-        const arrayFilterd = copyProductsCart.filter(
-          (product) => product.id !== id
-        );
-        setProductsCart(arrayFilterd);
-      }
+    if (item && item.qtd > 1) {
+      item.qtd = item.qtd - 1;
+      setProductsCart(copyProductsCart);
     } else {
-      alert("Esse produto não existe no carrinho");
+      const arrayFiltered = copyProductsCart.filter(
+        (product) => product.id !== id
+      );
+      setProductsCart(arrayFiltered);
     }
+  }
+
+  function clearCart() {
+    setProductsCart([]);
   }
 
   return (
     <CartContext.Provider
-      value={{ productsCart, addProducToCart, removeProductToCart }}
+      value={{ productsCart, addProducToCart, removeProductToCart, clearCart }}
     >
       {children}
     </CartContext.Provider>
